@@ -1,0 +1,52 @@
+body{
+    height: 100vh;
+    background-color: rgb(111, 175, 248);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.form{
+    border: 2px solid rgba(248, 247, 247, 0.1);
+    padding: 20px;
+    min-width: 30%;
+    text-align: center;
+}
+
+.form .group{
+    margin-bottom: 20px;
+}
+
+.group label{
+    font-size: medium;
+}
+
+.group input{
+border-radius: 5px;
+    height: 30px;
+    border: none;
+    outline: none;
+    margin-top: 10px;
+    padding: 0 10px;
+    color: red;
+   min-width: 300px;
+}
+
+button[type=submit]{
+padding: 10px 20px;
+border-radius: 5px;
+background-color: #1258da;
+color: white;
+font-size: large;
+border:5px solid rgb(61, 60, 60,0.1);
+outline: none;
+cursor: pointer;
+}
+
+.paste{
+
+    border-radius: 20px;
+    padding: 10px;
+    cursor: pointer;
+}
