@@ -43,13 +43,7 @@ body {
 }
 
 #app-cover {
-  position: absolute;
-  top: 50%;
-  right: 0;
-  left: 0;
-  width: 430px;
-  height: 100px;
-  margin: 4px auto;
+ 
 }
 
 #bg-artwork {
@@ -85,7 +79,7 @@ body {
 }
 
 #player-track {
-  position: absolute;
+position: absolute;
   top: 0;
   right: 15px;
   left: 3px;
@@ -97,7 +91,7 @@ body {
 }
 
 #player-track.active {
-  top: -92px;
+  top: -87px;
 }
 
 #album-name {
@@ -212,7 +206,7 @@ body {
 }
 
 #album-art.active {
-  top: -60px;
+  top: -97px;
   box-shadow: 0 0 0 4px #fff7f7, 0 30px 50px -15px #afb7c1;
 }
 
