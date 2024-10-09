@@ -1,16 +1,15 @@
-<!--do not mess with this you will messs it up-->
+
 *:focus {
   outline: none;
 }
 
 body {
-  font-family: Helvetica, Arial;
   margin: 0;
   height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: #f0f0f0; /* Couleur de fond */
+
 }
 
 #loader-container{
