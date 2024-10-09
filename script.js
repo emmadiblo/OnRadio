@@ -1,4 +1,5 @@
 //<!--emma   diblo  -->
+
 $(function () {
   var playerTrack = $("#player-track"),
     bgArtwork = $("#bg-artwork"),
@@ -256,28 +257,47 @@ $(function () {
       tProgress.text("00:00");
       tTime.text("00:00");
 
-      currAlbum = albums[currIndex];
-      currTrackName = trackNames[currIndex];
-      currArtwork = albumArtworks[currIndex];
-
-
-audio.src = trackUrl[currIndex];
-audio.volume = 0.5; // Volume initial à 50%
+  
+      const currAlbum = albums[currIndex];
+      const currTrackName = trackNames[currIndex];
+      const currArtwork = albumArtworks[currIndex];
+      audio.src = trackUrl[currIndex];
 
 // Récupérer les éléments du DOM
 const volumeRange = document.getElementById('volumeRange');
 const volumeValue = document.getElementById('volumeValue');
 
+
+volumeValue.textContent = (audio.volume * 100) + '%'; // Affiche le volume actuel
+volumeRange.value = audio.volume * 100; // Initialiser la valeur du range
+
 // Initialiser le volume affiché
-volumeValue.textContent = (audio.volume * 100) + '%'; // Affiche 50% au départ
+const storedVolume = localStorage.getItem('audioVolume');
+if (storedVolume) {
+    audio.volume = parseFloat(storedVolume); // Récupérer le volume
+} else {
+    audio.volume = 0.5; // Volume initial à 50%
+  
+}
+
+// Fonction pour changer de piste
+function changeTrack(index) {
+
+
+}
 
 // Écouter les changements sur le contrôle de volume
 volumeRange.addEventListener('input', function() {
-    const value = this.value;
-    volumeValue.textContent = value + '%'; // Met à jour l'affichage du volume
-    audio.volume = value / 100; // Ajuste le volume de l'élément audio
+  const value = this.value;
+  volumeValue.textContent = value + '%'; // Met à jour l'affichage du volume
+  audio.volume = value / 100; // Ajuste le volume de l'élément audio
+
+  // Stocker le volume dans localStorage
+  localStorage.setItem('audioVolume', audio.volume);
 });
- 
+
+
+changeTrack(0); // Initialisation avec la première piste
 
       nTime = 0;
       bTime = new Date();
@@ -371,6 +391,9 @@ initPlayer();
 
 
 });
+
+
+
 
 
 
