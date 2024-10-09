@@ -1,4 +1,4 @@
-//<!--names are 34 - 49 artists are 52 - 67 music urls are at 71 - 93  -->
+//<!--emma   diblo  -->
 $(function () {
   var playerTrack = $("#player-track"),
     bgArtwork = $("#bg-artwork"),
@@ -123,6 +123,7 @@ $(function () {
     currIndex = -1;
    
 
+    
   function playPause() {
     setTimeout(function () {
       if (audio.paused) {
@@ -258,7 +259,25 @@ $(function () {
       currAlbum = albums[currIndex];
       currTrackName = trackNames[currIndex];
       currArtwork = albumArtworks[currIndex];
-      audio.src = trackUrl[currIndex];
+
+
+audio.src = trackUrl[currIndex];
+audio.volume = 0.5; // Volume initial à 50%
+
+// Récupérer les éléments du DOM
+const volumeRange = document.getElementById('volumeRange');
+const volumeValue = document.getElementById('volumeValue');
+
+// Initialiser le volume affiché
+volumeValue.textContent = (audio.volume * 100) + '%'; // Affiche 50% au départ
+
+// Écouter les changements sur le contrôle de volume
+volumeRange.addEventListener('input', function() {
+    const value = this.value;
+    volumeValue.textContent = value + '%'; // Met à jour l'affichage du volume
+    audio.volume = value / 100; // Ajuste le volume de l'élément audio
+});
+ 
 
       nTime = 0;
       bTime = new Date();
