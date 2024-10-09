@@ -1,5 +1,6 @@
 //<!--emma   diblo  -->
 
+
 $(function () {
   var playerTrack = $("#player-track"),
     bgArtwork = $("#bg-artwork"),
@@ -391,6 +392,8 @@ initPlayer();
 
 
 });
+
+
 
 
 
