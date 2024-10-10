@@ -10,7 +10,7 @@ $(function () {
     albumArt = $("#album-art"),
     sArea = $("#s-area"),
     seekBar = $("#seek-bar"),
-    trackTime = $("#track-time"),
+    trackTime = $("#track-time"),  
     insTime = $("#ins-time"),
     sHover = $("#s-hover"),
     playPauseButton = $("#play-pause-button"),
@@ -231,11 +231,31 @@ $(function () {
     }
   }
 
+
+  const Audioloading = new Audio('loading.mp3');
+
+  
   function checkBuffering() {
-    clearInterval(buffInterval);
-    buffInterval = setInterval(function () {
-      if (nTime == 0 || bTime - nTime > 1000) albumArt.addClass("buffering");
-      else albumArt.removeClass("buffering");
+      clearInterval(buffInterval);
+      buffInterval = setInterval(function () {
+          // Vérifiez si le temps actuel est 0 ou si le buffering est en cours
+          if (nTime === 0 || (bTime - nTime > 1000)) {
+              albumArt.addClass("buffering");
+  
+              // Assurez-vous que l'audio de chargement n'est pas déjà en lecture
+              if (Audioloading.paused) {
+                  Audioloading.currentTime = 0; // Remettre le temps à 0 pour redémarrer
+                  Audioloading.play().catch(error => {
+                      console.error('Erreur lors de la lecture de l\'audio de chargement:', error);
+                  });
+              }
+          } else {
+              // Arrêter l'audio de chargement si le buffering n'est pas en cours
+              Audioloading.pause(); // Arrêter l'audio
+              albumArt.removeClass("buffering");
+          }
+     
+  
 
       bTime = new Date();
       bTime = bTime.getTime();
@@ -392,6 +412,7 @@ initPlayer();
 
 
 });
+
 
 
 
