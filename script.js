@@ -59,6 +59,7 @@ $(function () {
      "EAGLE SPORTS FM",
      "Radio voix d'Espoir",
       "REMA FM",
+      "INKINZO FM",
     ],
     trackNames = [
       "RTNB chaine 1",
@@ -87,15 +88,16 @@ $(function () {
         "EAGLE SPORTS FM",
         "Radio voix d'Espoir",
       "Rema FM",
+      "Radio Inkinzo FM",
     ],
-    albumArtworks = ["_1", "_2", "_3", "_4", "_5","_6","_7","_8","_9","_10","_11","_12","_13","_14","_15","_16","_17","_18","_19","_20","_21","_22","_23","_24"],
+    albumArtworks = ["_1", "_2", "_3", "_4", "_5","_6","_7","_8","_9","_10","_11","_12","_13","_14","_15","_16","_17","_18","_19","_20","_21","_22","_23","_24",_25","_26",_27","_28",_29","_30"],
     trackUrl = [ 
       "https://isanganiro.ice.infomaniak.ch/isanganiro-64.mp3",
       "https://cast6.asurahosting.com/proxy/radioaga/stream",
       "https://isanganiro.ice.infomaniak.ch/isanganiro-64.mp3?_=1",
       "http://dreamsiteradiocp2.com:8082/stream",
       "http://a9.asurahosting.com:8950/radio.mp3",
-                "https://eu10.fastcast4u.com/nderagakura/;",
+    "https://eu10.fastcast4u.com/nderagakura/;",
       
 "http://5.189.189.39:8000/zabujadotcom.mp3",
      
@@ -120,8 +122,10 @@ $(function () {
 "https://stream.zeno.fm/x3ktdppgx98uv",
 "https://audio.bfmtv.com/rmcradio_128.mp3",
 "https://stream4.rcast.net/65428",
-"https://stream.zeno.fm/hefiobzkki3uv?cto-uid=effb7b7d-db17-45b9-8735-cf9795ea8c9a-6718c3ec-5553&an-uid=2783029727828633261&dot-uid=0b25220400579aa9c57f63d9&triton-uid=cookie%3Ae96dfb54-23e9-478d-b5b9-15b9bd9fc7e5&amb-uid=8565960447303429953&dbm-uid=CAESEAsb2HQtqK3tuh4vyqr5e5o&dyn-uid=3824077489020677364&ttd-uid=bfe6f3e4-16c7-40fb-9db6-cf49ce8371d1&adtonosListenerId=01JAZXZ9V9X7PS2HBRKWC3D214&aw_0_req_lsid=09a7b928689b76e3dfdfbdcca6a03431",
-],
+"https://stream.zeno.fm/hefiobzkki3uv",
+"https://stream-175.zeno.fm/x3ktdppgx98uv",
+    
+    ],
     playPreviousTrackButton = $("#play-previous"),
     playNextTrackButton = $("#play-next"),
     currIndex = -1;
