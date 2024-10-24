@@ -232,7 +232,7 @@ $(function () {
   }
 
 
-  const Audioloading = new Audio('loading.mp3');
+ 
 
   
   function checkBuffering() {
@@ -242,16 +242,7 @@ $(function () {
           if (nTime === 0 || (bTime - nTime > 1000)) {
               albumArt.addClass("buffering");
   
-              // Assurez-vous que l'audio de chargement n'est pas déjà en lecture
-              if (Audioloading.paused) {
-                  Audioloading.currentTime = 0; // Remettre le temps à 0 pour redémarrer
-                  Audioloading.play().catch(error => {
-                      console.error('Erreur lors de la lecture de l\'audio de chargement:', error);
-                  });
-              }
           } else {
-              // Arrêter l'audio de chargement si le buffering n'est pas en cours
-              Audioloading.pause(); // Arrêter l'audio
               albumArt.removeClass("buffering");
           }
      
