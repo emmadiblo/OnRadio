@@ -147,28 +147,51 @@ $(function () {
     playPreviousTrackButton = $("#play-previous"),
     playNextTrackButton = $("#play-next"),
     currIndex = -1;
-   
-
+loadChannel= $("#loadaudio");
     
-  function playPause() {
-    setTimeout(function () {
-      if (audio.paused) {
-        playerTrack.addClass("active");
-        albumArt.addClass("active");
-        checkBuffering();
-        i.attr("class", "fas fa-pause");
-        audio.play();
-       
+function checkBuffering() {
+  clearInterval(buffInterval);
+  buffInterval = setInterval(function () {
+      // Check if the audio is buffering
+      if (nTime === 0 || (bTime - nTime > 1000)) {
+          albumArt.addClass("buffering");
+          loadChannel.show();  // Show loadChannel while buffering
       } else {
-        playerTrack.removeClass("active");
-        albumArt.removeClass("active");
-        clearInterval(buffInterval);
-        albumArt.removeClass("buffering");
-        i.attr("class", "fas fa-play");
-        audio.pause();
+          albumArt.removeClass("buffering");
+          loadChannel.hide();   // Hide loadChannel when not buffering
       }
-    }, 300);
-  }
+
+      bTime = new Date().getTime();
+  }, 100);
+}
+
+
+
+
+function playPause() {
+  setTimeout(function () {
+      if (audio.paused) {
+          playerTrack.addClass("active");
+          albumArt.addClass("active");
+       checkBuffering()
+          i.attr("class", "fas fa-pause");
+
+          // Play the audio from where it was paused
+          audio.play();
+          loadChannel.hide(); // Ensure loadChannel is hidden when play starts
+      } else {
+          playerTrack.removeClass("active");
+          albumArt.removeClass("active");
+          clearInterval(buffInterval);
+          albumArt.removeClass("buffering");
+          i.attr("class", "fas fa-play");
+          audio.pause();
+      
+          loadChannel.hide(); // Ensure loadChannel is hidden when pause occurs
+      }
+  }, 300);
+}
+
 
   function showHover(event) {
     seekBarPos = sArea.offset();
@@ -255,27 +278,30 @@ $(function () {
     }
   }
 
-
- 
-
   
+
+
   function checkBuffering() {
-      clearInterval(buffInterval);
-      buffInterval = setInterval(function () {
-          // Vérifiez si le temps actuel est 0 ou si le buffering est en cours
-          if (nTime === 0 || (bTime - nTime > 1000)) {
-              albumArt.addClass("buffering");
-  
+    clearInterval(buffInterval);
+    buffInterval = setInterval(function () {
+        // Check if the audio is buffering
+        if (nTime === 0 || (bTime - nTime > 1000)) {
+            albumArt.addClass("buffering");
+            loadChannel.show();  // Show loadChannel while buffering
+            playPauseButton.hide();
           } else {
-              albumArt.removeClass("buffering");
+            albumArt.removeClass("buffering");
+            loadChannel.hide();   // Hide loadChannel when not buffering
+            playPauseButton.show();
           }
-     
   
-
-      bTime = new Date();
-      bTime = bTime.getTime();
+        bTime = new Date().getTime();
     }, 100);
+
+
   }
+  
+  
 
   function selectTrack(flag) {
     if (flag == 0 || flag == 1) ++currIndex;
