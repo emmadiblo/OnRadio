@@ -53,7 +53,7 @@ body {
   border-radius: 50%;
   background: #ff1313;
   --_m: 
-    conic-gradient(#fc0a0a00 10%,#202428),
+    conic-gradient(#0000 10%,#000),
     linear-gradient(#000 0 0) content-box;
   -webkit-mask: var(--_m);
           mask: var(--_m);
